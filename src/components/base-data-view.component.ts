@@ -1,7 +1,6 @@
-import {Directive, Injector, TemplateRef, Type} from '@angular/core';
+import {Directive, Injector, TemplateRef} from '@angular/core';
 import {BasePanelComponent} from "./base-panel.component";
-import {DialogRef, ODataQueryOptions, PagedListResult, QueryResult, TableData} from "@dorbit";
-import {BaseReadRepository} from "dorbit-ng/src/services/base-reader-repository.service";
+import {DialogRef, ODataQueryOptions, PagedListResult, QueryResult, TableData} from "@framework";
 import {Observable} from "rxjs";
 
 @Directive()

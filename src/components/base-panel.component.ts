@@ -1,5 +1,5 @@
 import {Directive, Injector, TemplateRef} from '@angular/core';
-import {BaseComponent, ConfirmOptions, DialogOptions, DialogService} from "@dorbit";
+import {BaseComponent, ConfirmOptions, DialogOptions, DialogService} from "@framework";
 
 @Directive()
 export abstract class BasePanelComponent extends BaseComponent {

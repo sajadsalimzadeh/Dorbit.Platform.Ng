@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {BaseComponent} from "@dorbit";
+import {BaseComponent} from "@framework";
 
 @Component({
   selector: 'app-panel-breadcrumb',

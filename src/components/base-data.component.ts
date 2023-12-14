@@ -1,5 +1,5 @@
 import {Directive, Injector, Type} from '@angular/core';
-import {BaseWriteRepository} from "@dorbit";
+import {BaseWriteRepository} from "@framework";
 import {BaseDataViewComponent} from "./base-data-view.component";
 
 @Directive()

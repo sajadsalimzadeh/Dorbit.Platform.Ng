@@ -2,7 +2,7 @@ import {ModuleWithProviders, NgModule} from '@angular/core';
 import {RouterModule} from "@angular/router";
 import {LayoutComponent} from "./pages/index.component";
 import {CommonModule} from "@angular/common";
-import {DorbitModule} from "@dorbit";
+import {DorbitModule} from "@framework";
 
 export * from './components'
 

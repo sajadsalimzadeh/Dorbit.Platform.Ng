@@ -1,7 +1,7 @@
 import {Directive, EventEmitter, Injector, Input, Output, Type} from '@angular/core';
 import {BasePanelComponent} from "./base-panel.component";
 import {FormGroup} from "@angular/forms";
-import {BaseWriteRepository} from "@dorbit";
+import {BaseWriteRepository} from "@framework";
 
 @Directive()
 export abstract class BaseFormComponent extends BasePanelComponent {
