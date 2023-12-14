@@ -1,0 +1,237 @@
+:host {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  position: fixed;
+  background-color: var(--bg-color);
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  width: var(--aside-width);
+  color: var(--color-gray-2);
+  background-color: var(--color-gray--1);
+
+  .logo-box {
+    width: 100%;
+    display: flex;
+    padding: 2rem 1rem;
+    justify-content: center;
+
+    img {
+      width: 70%;
+    }
+  }
+
+  .menus {
+    flex: 1;
+    position: relative;
+
+    .level-0 {
+      //gap: 1rem;
+      font-size: .9rem;
+
+
+      > li > a {
+        border-radius: 6px;
+        padding: .7rem 1rem;
+      }
+
+      ul {
+        font-size: .9rem;
+        padding-inline-start: .5rem;
+        background-color: var(--color-gray--3);
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      flex-direction: column;
+
+      li {
+        display: flex;
+        flex-direction: column;
+
+        &.expanded {
+          .arrow {
+            transform: rotate(-90deg);
+          }
+        }
+
+        a {
+          gap: 1rem;
+          display: flex;
+          align-items: center;
+          padding: .5rem .5rem;
+
+          &:link, &:visited {
+            text-decoration: none;
+          }
+
+          i {
+            width: 2rem;
+            display: flex;
+            font-size: 1.3em;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gray-5);
+
+            &.icon {
+              font-size: 1.7em;
+            }
+
+            &.no-icon::before {
+              content: '';
+            }
+          }
+
+          span {
+            flex: 1;
+            font-size: 1.1em;
+            color: var(--color-gray-5);
+          }
+
+          &:hover > * {
+            color: var(--color-gray-2);
+          }
+        }
+      }
+    }
+  }
+
+  .toolbar {
+    gap: 2rem;
+    display: flex;
+    direction: ltr;
+    min-height: 60px;
+    font-size: 1.3rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gray-7);
+    background-color: var(--color-gray--0);
+
+    .time {
+      display: flex;
+      align-items: center;
+
+      span {
+        width: 2rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+main {
+  flex: 1;
+  gap: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  header {
+    display: flex;
+    min-height: 60px;
+    justify-content: space-between;
+
+    ul {
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      color: var(--color-gray--2);
+
+      &.end {
+        flex-direction: row-reverse;
+      }
+
+      li a {
+        gap: 1rem;
+        color: var(--color-gray-1);
+
+        &, span {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .icon-box {
+        width: 3.5rem;
+        height: 3.5rem;
+        display: flex;
+        font-size: 1.2rem;
+        border-radius: 8px;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-gray-7);
+        background-color: var(--color-gray--3);
+
+        &:hover {
+          background-color: var(--color-gray--4);
+        }
+      }
+    }
+  }
+
+  .content {
+    flex: 1;
+    overflow: auto;
+
+    ::ng-deep {
+      router-outlet + * {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+
+        > d-table {
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
+
+.profile-dropdown {
+
+  ul {
+    min-width: 200px;
+    padding: 0;
+    margin: 1rem 0 0;
+    list-style: none;
+    border-radius: 6px;
+    border: 1px solid var(--color-gray--3);
+    background-color: var(--color-gray--0);
+
+    li {
+      display: flex;
+      align-items: center;
+
+      a {
+        width: 100%;
+        gap: 1rem;
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.2rem;
+        text-decoration: none;
+        color: var(--color-gray-2);
+
+        i {
+          color: var(--color-gray-5);
+        }
+
+        &:hover {
+          background-color: var(--color-gray--2);
+        }
+      }
+    }
+  }
+}
