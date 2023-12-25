@@ -4,7 +4,8 @@ import {LayoutComponent} from "./pages/index.component";
 import {CommonModule} from "@angular/common";
 import {DorbitModule} from "@framework";
 
-export * from './components'
+export * from './components';
+export * from './services';
 
 @NgModule({
   imports: [

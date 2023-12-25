@@ -4,10 +4,6 @@ import {BaseComponent, ConfirmOptions, DialogOptions, DialogService} from "@fram
 @Directive()
 export abstract class BasePanelComponent extends BaseComponent {
 
-  protected get dialogService(): DialogService {
-    return this._services['DialogService'] ??= this.injector.get(DialogService);
-  }
-
   protected messages = {
     formInvalid: () => this.messageService.warn(this.t('message.form-invalid')),
     success: () => this.messageService.success(this.t('message.success')),

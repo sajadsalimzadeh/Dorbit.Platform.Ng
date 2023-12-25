@@ -1,7 +1,7 @@
 import {Component, Inject, Injector, NgZone} from '@angular/core';
 import {BaseComponent} from "@framework";
 import {BaseLayoutService, MenuItem} from "../services/base-layout.service";
-import * as moment from "jalali-moment";
+import moment from "jalali-moment";
 import {AuthRepository} from "@identity";
 import {PanelService, UserInfo} from "../services/panel.service";
 
