@@ -1,9 +1,9 @@
 import {Component, Inject, Injector, NgZone} from '@angular/core';
 import {BaseComponent} from "@framework";
 import {BaseLayoutService, MenuItem} from "../services/base-layout.service";
-import moment from "jalali-moment";
 import {AuthRepository} from "@identity";
 import {PanelService, UserInfo} from "../services/panel.service";
+import moment from "jalali-moment";
 
 @Component({
   selector: 'panel-layout',
@@ -52,7 +52,7 @@ export class LayoutComponent extends BaseComponent {
 
     this.mainMenus = [];
     this.profileMenus = [];
-    for (const baseLayoutService of this.baseLayoutServices) {
+    for (const baseLayoutService of this.baseLayoutServices.sort(x => x.order)) {
       this.mainMenus.push(...await baseLayoutService.getMainMenus());
       this.profileMenus.push(...await baseLayoutService.getProfileMenus())
     }
