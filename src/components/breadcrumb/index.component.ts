@@ -15,6 +15,5 @@ export class BreadcrumbComponent extends BaseComponent {
 
     this.urls = ['project.name'];
     this.urls.push(...this.router.url.split('/').filter(x => !!x).map(x => 'route.' + x));
-    console.log(this.urls)
   }
 }

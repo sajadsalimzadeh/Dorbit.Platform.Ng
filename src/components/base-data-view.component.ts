@@ -1,11 +1,13 @@
 import {Directive, Injector, TemplateRef} from '@angular/core';
 import {BasePanelComponent} from "./base-panel.component";
 import {DialogRef, ODataQueryOptions, PagedListResult, QueryResult, TableData} from "@framework";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 @Directive()
 export abstract class BaseDataViewComponent extends BasePanelComponent {
   data: TableData = {items: [], totalCount: 0}
+
+  loadSubscription = new Subscription();
 
   constructor(injector: Injector) {
     super(injector);
@@ -20,7 +22,8 @@ export abstract class BaseDataViewComponent extends BasePanelComponent {
   protected abstract loader(query: ODataQueryOptions): Observable<PagedListResult>;
 
   protected load() {
-    this.loader(new ODataQueryOptions()).subscribe(res => {
+    this.loadSubscription.unsubscribe();
+    this.loadSubscription = this.loader(new ODataQueryOptions()).subscribe(res => {
       this.data = {
         items: res.data ?? [],
         totalCount: res.totalCount ?? res.data?.length ?? 0,
