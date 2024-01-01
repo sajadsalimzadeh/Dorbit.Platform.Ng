@@ -1,11 +1,12 @@
 import {Directive, Injector, TemplateRef} from '@angular/core';
 import {BasePanelComponent} from "./base-panel.component";
-import {DialogRef, ODataQueryOptions, PagedListResult, QueryResult, TableData} from "@framework";
+import {DialogRef, ODataQueryOptions, PagedListResult, TableConfig, TableData} from "@framework";
 import {Observable, Subscription} from "rxjs";
 
 @Directive()
 export abstract class BaseDataViewComponent extends BasePanelComponent {
-  data: TableData = {items: [], totalCount: 0}
+  data: TableData = {items: [], totalCount: 0};
+  config = new TableConfig();
 
   loadSubscription = new Subscription();
 
