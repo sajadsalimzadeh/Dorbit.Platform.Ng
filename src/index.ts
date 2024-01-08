@@ -1,8 +1,9 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {RouterModule} from "@angular/router";
-import {LayoutComponent} from "./pages/index.component";
 import {CommonModule} from "@angular/common";
 import {DorbitModule} from "@framework";
+import {LayoutAdminComponent} from "./components/layouts/admin/index.component";
+import {LayoutMobileComponent} from "./components/layouts/mobile/index.component";
 
 export * from './components';
 export * from './services';
@@ -13,8 +14,8 @@ export * from './services';
     RouterModule,
     DorbitModule,
   ],
-  exports: [LayoutComponent],
-  declarations: [LayoutComponent],
+  exports: [LayoutAdminComponent, LayoutMobileComponent],
+  declarations: [LayoutAdminComponent, LayoutMobileComponent],
   providers: [],
 })
 export class PanelModule {

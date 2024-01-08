@@ -1,17 +1,17 @@
 import {Component, Inject, Injector, NgZone} from '@angular/core';
 import {BaseComponent} from "@framework";
-import {BaseLayoutService, MenuItem} from "../services/base-layout.service";
+import {BaseLayoutService, MenuItem} from "../../../services/base-layout.service";
 import {AuthRepository} from "@identity";
-import {PanelService, UserInfo} from "../services/panel.service";
+import {PanelService, UserInfo} from "../../../services/panel.service";
 import moment from "jalali-moment";
 
 @Component({
-  selector: 'panel-layout',
+  selector: 'panel-layout-admin',
   templateUrl: 'index.component.html',
   styleUrls: ['./index.component.scss']
 })
 
-export class LayoutComponent extends BaseComponent {
+export class LayoutAdminComponent extends BaseComponent {
 
   mainMenus: MenuItem[] = [];
   profileMenus: MenuItem[] = [];

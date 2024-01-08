@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {BaseComponent} from "@framework";
 
 @Component({
-  selector: 'app-panel-breadcrumb',
+  selector: 'panel-breadcrumb',
   templateUrl: 'index.component.html',
   styleUrls: ['./index.component.scss']
 })
