@@ -44,6 +44,11 @@ aside {
         font-size: .9rem;
         padding-inline-start: .5rem;
         background-color: var(--color-gray--3);
+
+        i.icon {
+          font-size: 1.4em !important;
+          color: var(--color-gray-7);
+        }
       }
     }
 
@@ -97,8 +102,12 @@ aside {
             color: var(--color-gray-5);
           }
 
-          &:hover > * {
-            color: var(--color-gray-2);
+          &:hover {
+            background-color: var(--color-gray--2);
+
+            > * {
+              color: var(--color-gray-2);
+            }
           }
         }
       }

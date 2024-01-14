@@ -1,12 +1,17 @@
 import {Directive, Injector, Type} from '@angular/core';
-import {BaseWriteRepository} from "@framework";
+import {BaseWriteRepository, ODataQueryOptions, PagedListResult} from "@framework";
 import {BaseDataViewComponent} from "./base-data-view.component";
+import {Observable} from "rxjs";
 
 @Directive()
 export abstract class BaseDataComponent extends BaseDataViewComponent {
 
   constructor(injector: Injector, protected repository: BaseWriteRepository) {
     super(injector);
+  }
+
+  protected override loader(query: ODataQueryOptions): Observable<PagedListResult> {
+    return this.repository.select(query);
   }
 
   remove(item: any) {
