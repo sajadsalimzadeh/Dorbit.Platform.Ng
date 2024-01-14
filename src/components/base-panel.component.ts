@@ -7,7 +7,7 @@ export abstract class BasePanelComponent extends BaseComponent {
   protected messages = {
     formInvalid: () => this.messageService.warn(this.t('message.form-invalid')),
     success: () => this.messageService.success(this.t('message.success')),
-    error: () => this.messageService.error(this.t('message.error')),
+    error: () => this.messageService.danger(this.t('message.error')),
   }
 
   constructor(injector: Injector) {

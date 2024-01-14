@@ -1,0 +1,49 @@
+<div class="frame">
+  <header *ngIf="show.header">
+    <div class="start">
+      <a class="notification" routerLink="/notifications" [ngClass]="{active: router.url.startsWith('/notifications')}">
+        <i class="far fa-bell" [ngClass]="(notificationCount > 0 ? 'move' : '')"></i>
+        <span *ngIf="notificationCount > 0" class="badge">{{ notificationCount }}</span>
+      </a>
+      <a class="reload" (click)="reload()">
+        <i class="far fa-refresh"></i>
+      </a>
+    </div>
+    <div class="center">
+      <img src="assets/images/logo.png"/>
+      <span>{{ 'main.title' | translate }}</span>
+    </div>
+    <div class="end">
+      <a class="profile color-danger" routerLink="/auth">
+        <i class="far fa-power-off"></i>
+      </a>
+    </div>
+  </header>
+  <main>
+    <ng-content></ng-content>
+  </main>
+  <footer *ngIf="show.footer">
+    <ul>
+      <li *ngFor="let menu of menus" [ngClass]="[menu.class ?? '', (selectedMenu == menu ? 'selected' : '')]">
+        <a [routerLink]="menu.link">
+          <i *ngIf="menu.icon" [class]="menu.icon"></i>
+          <span *ngIf="menu.text">{{ menu.text | translate }}</span>
+        </a>
+      </li>
+    </ul>
+  </footer>
+  <svg width="0" height="0">
+    <defs>
+      <clipPath clipPathUnits="objectBoundingBox" id="footer-clip-path">
+        <path></path>
+      </clipPath>
+    </defs>
+  </svg>
+
+  <a *ngIf="show.home" class="home-btn" [routerLink]="'/'">
+    <i class="far fa-home"></i>
+  </a>
+
+  <d-message-container position="top-center"></d-message-container>
+  <d-dialog-container></d-dialog-container>
+</div>

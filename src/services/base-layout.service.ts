@@ -15,6 +15,7 @@ export interface MenuItem {
   text: string;
   link?: string;
   icon?: string;
+  class?: string;
   children?: MenuItem[];
 
   expanded?: boolean;
