@@ -1,7 +1,7 @@
 import {Component, Injector, Input} from '@angular/core';
 import {NavigationCancel, NavigationEnd, NavigationError} from "@angular/router";
 import {BaseComponent, internetStateService} from "@framework";
-import {MenuItem} from "@panel";
+import {MenuItem} from "../../../services/base-layout.service";
 
 @Component({
   selector: 'panel-layout-mobile',

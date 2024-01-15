@@ -1,6 +1,6 @@
 <aside>
   <div class="logo-box">
-    <img src="assets/images/logo-white.png"/>
+    <img [src]="'assets/images/logo-'+theme+'.png'"/>
   </div>
   <div class="menus">
     <div class="scroll-container">
@@ -24,7 +24,7 @@
       <li class="profile">
         <a [dOverlay]="{template: profileDropDownTpl}">
           <i class="icon-box far fa-user color-link-tint"></i>
-          <span>{{userInfo?.name}}</span>
+          <span>{{ userInfo?.name }}</span>
           <i class="far fa-angle-down"></i>
         </a>
       </li>
@@ -47,7 +47,7 @@
       </li>
       <li>
         <a>
-          <span>{{'panel.telephone' | translate}}</span>
+          <span>{{ 'panel.telephone' | translate }}</span>
           <i class="icon-box far fa-phone-alt color-success"></i>
         </a>
       </li>
@@ -63,7 +63,7 @@
     <li *ngFor="let item of items" [ngClass]="{expanded: item.expanded}">
       <a [routerLink]="item.link" (click)="toggleMenu(item, items)">
         <i [ngClass]="'icon ' + (item.icon ?? 'no-icon')"></i>
-        <span>{{item.text | translate}}</span>
+        <span>{{ item.text | translate }}</span>
         <ng-container *ngIf="item.children && item.children.length > 0">
           <i class="arrow far fa-angle-left"></i>
         </ng-container>

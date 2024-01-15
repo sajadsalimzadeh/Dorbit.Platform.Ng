@@ -1,9 +1,9 @@
 import {Component, Inject, Injector, NgZone} from '@angular/core';
 import {BaseComponent} from "@framework";
 import {BaseLayoutService, MenuItem} from "../../../services/base-layout.service";
-import {AuthRepository} from "@identity";
 import {PanelService, UserInfo} from "../../../services/panel.service";
 import moment from "jalali-moment";
+import {panelStore} from "../../../stores";
 
 @Component({
   selector: 'panel-layout-admin',
@@ -18,12 +18,12 @@ export class LayoutAdminComponent extends BaseComponent {
   timeInterval: any;
 
   userInfo?: UserInfo;
+  theme = panelStore.store.theme;
 
   constructor(
     injector: Injector,
     private readonly zone: NgZone,
     private panelService: PanelService,
-    private authRepository: AuthRepository,
     @Inject(BaseLayoutService) private baseLayoutServices: BaseLayoutService[]) {
     super(injector);
   }
@@ -33,6 +33,10 @@ export class LayoutAdminComponent extends BaseComponent {
 
     this.subscription.add(this.panelService.$userInfo.subscribe(e => {
       this.userInfo = e;
+    }));
+
+    this.subscription.add(panelStore.on('theme').subscribe(e => {
+      this.theme = e.theme;
     }))
 
     this.zone.runOutsideAngular(() => {
@@ -56,6 +60,11 @@ export class LayoutAdminComponent extends BaseComponent {
       this.mainMenus.push(...await baseLayoutService.getMainMenus());
       this.profileMenus.push(...await baseLayoutService.getProfileMenus())
     }
+    this.profileMenus.push({
+      icon: 'fal fa-palette', text: 'تغییر قالب', action: () => {
+        panelStore.set('theme', panelStore.store.theme === 'default-light' ? 'default-dark' : 'default-light');
+      }
+    })
   }
 
   override ngOnDestroy() {
@@ -67,11 +76,11 @@ export class LayoutAdminComponent extends BaseComponent {
     const status = !item.expanded;
     items.forEach(x => x.expanded = false);
     item.expanded = status;
+    if (item.action) item.action(item);
   }
 
-  logout() {
-    this.authRepository.logout().subscribe(() => {
-      this.router.navigate(['/auth'])
-    })
+  async logout() {
+    this.panelService.$logout.emit();
+    await this.router.navigate(['/auth'])
   }
 }

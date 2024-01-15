@@ -17,6 +17,7 @@ export interface MenuItem {
   icon?: string;
   class?: string;
   children?: MenuItem[];
+  action?: (item: MenuItem) => void;
 
   expanded?: boolean;
 }

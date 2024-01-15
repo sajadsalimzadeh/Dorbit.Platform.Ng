@@ -12,8 +12,8 @@ aside {
   display: flex;
   flex-direction: column;
   width: var(--aside-width);
-  color: var(--color-gray-2);
-  background-color: var(--color-gray--1);
+  color: var(--color-gray-8);
+  background-color: var(--color-gray--2);
 
   .logo-box {
     width: 100%;
@@ -22,7 +22,7 @@ aside {
     justify-content: center;
 
     img {
-      width: 70%;
+      width: 85%;
     }
   }
 
@@ -42,8 +42,7 @@ aside {
 
       ul {
         font-size: .9rem;
-        padding-inline-start: .5rem;
-        background-color: var(--color-gray--3);
+        background-color: rgba(var(--color-black-rgb), .05);
 
         i.icon {
           font-size: 1.4em !important;
@@ -85,7 +84,7 @@ aside {
             font-size: 1.3em;
             align-items: center;
             justify-content: center;
-            color: var(--color-gray-5);
+            color: var(--color-gray-9);
 
             &.icon {
               font-size: 1.7em;
@@ -99,14 +98,17 @@ aside {
           span {
             flex: 1;
             font-size: 1.1em;
-            color: var(--color-gray-5);
+            color: var(--color-gray-6);
           }
 
           &:hover {
-            background-color: var(--color-gray--2);
+            background-color: rgba(var(--color-black-rgb), .03);
 
-            > * {
-              color: var(--color-gray-2);
+            > i {
+              color: var(--color-gray-7);
+            }
+            > span {
+              color: var(--color-gray-5);
             }
           }
         }
@@ -123,7 +125,7 @@ aside {
     align-items: center;
     justify-content: center;
     color: var(--color-gray-7);
-    background-color: var(--color-gray--0);
+    background-color: var(--color-gray--3);
 
     .time {
       display: flex;
@@ -139,14 +141,13 @@ aside {
 
 main {
   flex: 1;
-  gap: 1rem;
-  padding: 2rem;
+  gap: 1.5rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
 
   header {
     display: flex;
-    min-height: 60px;
     justify-content: space-between;
 
     ul {
@@ -163,7 +164,7 @@ main {
 
       li a {
         gap: 1rem;
-        color: var(--color-gray-1);
+        color: var(--color-gray-6);
 
         &, span {
           display: flex;
@@ -179,7 +180,7 @@ main {
         border-radius: 8px;
         align-items: center;
         justify-content: center;
-        color: var(--color-gray-7);
+        color: var(--color-gray-8);
         background-color: var(--color-gray--3);
 
         &:hover {
@@ -234,6 +235,7 @@ main {
         color: var(--color-gray-2);
 
         i {
+          font-size: 1.5em;
           color: var(--color-gray-5);
         }
 

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 
 export interface UserInfo {
@@ -9,6 +9,7 @@ export interface UserInfo {
 export class PanelService {
 
   $userInfo = new BehaviorSubject<UserInfo | undefined>(undefined)
+  $logout = new EventEmitter<void>()
 
   constructor() {
   }

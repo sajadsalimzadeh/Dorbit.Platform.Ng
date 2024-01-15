@@ -1,20 +1,18 @@
 import {NgModule} from '@angular/core';
 import {DorbitModule} from "@framework";
 import {BreadcrumbComponent} from "./breadcrumb/index.component";
-import {TranslateModule} from "@ngx-translate/core";
 
 const COMPONENTS = [
   BreadcrumbComponent
 ]
 
 @NgModule({
-  imports: [DorbitModule, TranslateModule],
+  imports: [DorbitModule],
   exports: [
+    DorbitModule,
     ...COMPONENTS,
-    TranslateModule,
   ],
   declarations: [...COMPONENTS],
-  providers: [],
 })
 export class PanelSharedModule {
 }
