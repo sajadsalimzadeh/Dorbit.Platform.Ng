@@ -1,6 +1,6 @@
-import {Directive, Injector, TemplateRef} from '@angular/core';
+import {Directive, Injector, TemplateRef, Type} from '@angular/core';
 import {BasePanelComponent} from "./base-panel.component";
-import {DialogRef, ODataQueryOptions, PagedListResult, TableConfig, TableData} from "@framework";
+import {DialogOptions, DialogRef, ODataQueryOptions, PagedListResult, TableConfig, TableData} from "@framework";
 import {Observable, Subscription} from "rxjs";
 
 @Directive()
@@ -37,6 +37,13 @@ export abstract class BaseDataViewComponent extends BasePanelComponent {
     dialog.onClose.subscribe(() => {
       this.load();
     })
-    return  dialog;
+    return dialog;
+  }
+
+  showDialogByComponent(component: Type<any>, options?: DialogOptions) {
+    this.dialogService.open({
+      ...options,
+      component: component
+    })
   }
 }
