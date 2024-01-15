@@ -63,7 +63,7 @@
     <li *ngFor="let item of items" [ngClass]="{expanded: item.expanded}">
       <a [routerLink]="item.link" (click)="toggleMenu(item, items)">
         <i [ngClass]="'icon ' + (item.icon ?? 'no-icon')"></i>
-        <span>{{item.text}}</span>
+        <span>{{item.text | translate}}</span>
         <ng-container *ngIf="item.children && item.children.length > 0">
           <i class="arrow far fa-angle-left"></i>
         </ng-container>
