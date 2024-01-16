@@ -60,18 +60,20 @@
 
 <ng-template #menusTpl let-items let-level="level">
   <ul [ngClass]="'level-' + (level ?? 0)">
-    <li *ngFor="let item of items" [ngClass]="{expanded: item.expanded}">
-      <a [routerLink]="item.link" (click)="toggleMenu(item, items)">
-        <i [ngClass]="'icon ' + (item.icon ?? 'no-icon')"></i>
-        <span>{{ item.text | translate }}</span>
-        <ng-container *ngIf="item.children && item.children.length > 0">
-          <i class="arrow far fa-angle-left"></i>
+    <ng-container *ngFor="let item of items">
+      <li *auth="item.accesses" [ngClass]="{expanded: item.expanded}">
+        <a [routerLink]="item.link" (click)="toggleMenu(item, items)">
+          <i [ngClass]="'icon ' + (item.icon ?? 'no-icon')"></i>
+          <span>{{ item.text | translate }}</span>
+          <ng-container *ngIf="item.children && item.children.length > 0">
+            <i class="arrow far fa-angle-left"></i>
+          </ng-container>
+        </a>
+        <ng-container *ngIf="item.expanded && item.children && item.children.length > 0">
+          <ng-container *ngTemplateOutlet="menusTpl; context: {$implicit:item.children, level: (level ?? 0) + 1}"></ng-container>
         </ng-container>
-      </a>
-      <ng-container *ngIf="item.expanded && item.children && item.children.length > 0">
-        <ng-container *ngTemplateOutlet="menusTpl; context: {$implicit:item.children, level: (level ?? 0) + 1}"></ng-container>
-      </ng-container>
-    </li>
+      </li>
+    </ng-container>
   </ul>
 </ng-template>
 

@@ -60,6 +60,15 @@ export class LayoutAdminComponent extends BaseComponent {
       this.mainMenus.push(...await baseLayoutService.getMainMenus());
       this.profileMenus.push(...await baseLayoutService.getProfileMenus())
     }
+    this.mainMenus.forEach(x => {
+      if (!x.accesses && x.children) {
+        const accesses: string[] = [];
+        x.children.forEach(c => {
+          if (c.accesses) accesses.push(...c.accesses)
+        });
+        x.accesses = accesses;
+      }
+    });
     this.profileMenus.push({
       icon: 'fal fa-palette', text: 'تغییر قالب', action: () => {
         panelStore.set('theme', panelStore.store.theme === 'default-light' ? 'default-dark' : 'default-light');

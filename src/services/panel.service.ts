@@ -8,6 +8,7 @@ export interface UserInfo {
 @Injectable({providedIn: 'root'})
 export class PanelService {
 
+  $accesses = new BehaviorSubject<string[]>([])
   $userInfo = new BehaviorSubject<UserInfo | undefined>(undefined)
   $logout = new EventEmitter<void>()
 

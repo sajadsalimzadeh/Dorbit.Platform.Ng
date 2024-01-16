@@ -1,9 +1,11 @@
 import {NgModule} from '@angular/core';
 import {DorbitModule} from "@framework";
 import {BreadcrumbComponent} from "./breadcrumb/index.component";
+import {AuthDirective} from "./auth.directive";
 
 const COMPONENTS = [
-  BreadcrumbComponent
+  BreadcrumbComponent,
+  AuthDirective
 ]
 
 @NgModule({

@@ -18,6 +18,7 @@ export interface MenuItem {
   class?: string;
   children?: MenuItem[];
   action?: (item: MenuItem) => void;
+  accesses?: string[];
 
   expanded?: boolean;
 }
