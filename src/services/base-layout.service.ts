@@ -19,6 +19,7 @@ export interface MenuItem {
   children?: MenuItem[];
   action?: (item: MenuItem) => void;
   accesses?: string[];
+  order?: number;
 
   expanded?: boolean;
 }

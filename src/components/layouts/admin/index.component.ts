@@ -1,5 +1,5 @@
-import {Component, Inject, Injector, NgZone} from '@angular/core';
-import {BaseComponent} from "@framework";
+import {Component, Inject, Injector, NgZone, Optional} from '@angular/core';
+import {APP_VERSION, BaseComponent} from "@framework";
 import {BaseLayoutService, MenuItem} from "../../../services/base-layout.service";
 import {PanelService, UserInfo} from "../../../services/panel.service";
 import moment from "jalali-moment";
@@ -24,6 +24,7 @@ export class LayoutAdminComponent extends BaseComponent {
     injector: Injector,
     private readonly zone: NgZone,
     private panelService: PanelService,
+    @Inject(APP_VERSION) @Optional() protected version: string,
     @Inject(BaseLayoutService) private baseLayoutServices: BaseLayoutService[]) {
     super(injector);
   }
@@ -60,6 +61,11 @@ export class LayoutAdminComponent extends BaseComponent {
       this.mainMenus.push(...await baseLayoutService.getMainMenus());
       this.profileMenus.push(...await baseLayoutService.getProfileMenus())
     }
+    this.mainMenus = this.mainMenus.sort((x1, x2) => {
+      x1.order ??= 0;
+      x2.order ??= 0;
+      return (x1.order > x2.order ? 1 : (x1.order < x2.order ? -1 : 0))
+    });
     this.mainMenus.forEach(x => {
       if (!x.accesses && x.children) {
         const accesses: string[] = [];
