@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {BaseComponent} from "@framework";
 
 @Component({
@@ -8,6 +8,8 @@ import {BaseComponent} from "@framework";
 })
 
 export class BreadcrumbComponent extends BaseComponent {
+  @Output() onBack = new EventEmitter();
+
   urls: string[] = [];
 
   override ngOnInit() {
@@ -15,5 +17,13 @@ export class BreadcrumbComponent extends BaseComponent {
 
     this.urls = ['project.name'];
     this.urls.push(...this.router.url.split('/').filter(x => !!x).map(x => 'route.' + x));
+  }
+
+  back() {
+    if(this.onBack.observed) {
+      this.onBack.emit();
+    } else {
+      this.location.back();
+    }
   }
 }

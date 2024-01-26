@@ -14,6 +14,13 @@ export abstract class BasePanelComponent extends BaseComponent {
     super(injector);
   }
 
+  override ngOnInit() {
+    super.ngOnInit();
+
+    const classes = this.route.snapshot.data['classes'];
+    if(classes) this.elementRef.nativeElement.classList.add(classes);
+  }
+
   showDialog(template: TemplateRef<any>, options?: { title?: string, width?: string, context?: any }) {
     return this.dialogService.open({
       template: template,

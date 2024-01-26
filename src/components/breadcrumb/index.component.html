@@ -1,1 +1,6 @@
-<d-breadcrumb class="mb-2" [items]="urls"></d-breadcrumb>
+<d-breadcrumb class="mb-2" [items]="urls">
+  <a class="back" (click)="back()">
+    <span>بازگشت</span>
+    <i class="far fa-angle-left"></i>
+  </a>
+</d-breadcrumb>
