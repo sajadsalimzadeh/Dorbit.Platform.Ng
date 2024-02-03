@@ -41,7 +41,7 @@ export abstract class BaseDataViewComponent extends BasePanelComponent {
   }
 
   showDialogByComponent(component: Type<any>, context: any, options?: DialogOptions) {
-    this.dialogService.open({
+    return this.dialogService.open({
       ...options,
       context: context,
       component: component
