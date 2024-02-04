@@ -18,7 +18,12 @@ export abstract class BaseFormComponent extends BasePanelComponent {
   override ngOnInit() {
     super.ngOnInit();
 
-    this.form.patchValue(this.model);
+    if(this.model) {
+      this.form.patchValue(this.model);
+      this.form.get('id')?.enable();
+    } else {
+      this.form.get('id')?.disable();
+    }
   }
 
   save() {
@@ -32,6 +37,7 @@ export abstract class BaseFormComponent extends BasePanelComponent {
     }
     const value = this.form.value;
     if (!value.id) {
+      delete value.id;
       this.subscription.add(this.repository.add(value).subscribe(res => {
         this.onComplete.emit();
       }));
