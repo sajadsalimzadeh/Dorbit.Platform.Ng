@@ -5,17 +5,14 @@
         <i class="far fa-bell" [ngClass]="(notificationCount > 0 ? 'move' : '')"></i>
         <span *ngIf="notificationCount > 0" class="badge">{{ notificationCount }}</span>
       </a>
-      <a class="reload" (click)="reload()">
-        <i class="far fa-refresh"></i>
-      </a>
     </div>
     <div class="center">
       <img src="assets/images/logo.png"/>
       <span>{{ 'main.title' | translate }}</span>
     </div>
     <div class="end">
-      <a class="profile color-danger" routerLink="/auth">
-        <i class="far fa-power-off"></i>
+      <a class="reload" (click)="reload()">
+        <i class="far fa-refresh"></i>
       </a>
     </div>
   </header>
