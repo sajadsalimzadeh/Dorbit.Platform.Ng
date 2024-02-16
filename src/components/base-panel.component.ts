@@ -1,11 +1,26 @@
 import {Directive, Injector, TemplateRef} from '@angular/core';
-import {BaseComponent, ConfirmOptions, DialogOptions, DialogService} from "@framework";
+import {BaseComponent, ConfirmOptions, DialogComponent, DialogOptions, DialogService} from "@framework";
+import {FormGroup} from "@angular/forms";
+import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
+import {FormUtil} from "../../../framework/projects/core/src/utils/form";
 
 @Directive()
 export abstract class BasePanelComponent extends BaseComponent {
 
   protected messages = {
-    formInvalid: () => this.messageService.warn(this.t('message.form-invalid')),
+    formInvalid: (form?: FormGroup) => {
+      let hasCustomMessage = false;
+      for (const formKey in FormUtil.getErrors(form)) {
+        const translateKey = `message.form-invalid.${formKey}`;
+        const translate = this.t(translateKey);
+        if (translate == translateKey) continue;
+        this.messageService.warn(translate);
+        hasCustomMessage = true;
+      }
+      if (!hasCustomMessage) {
+        this.messageService.warn(this.t('message.form-invalid'));
+      }
+    },
     success: () => this.messageService.success(this.t('message.success')),
     error: () => this.messageService.danger(this.t('message.error')),
   }
@@ -18,10 +33,10 @@ export abstract class BasePanelComponent extends BaseComponent {
     super.ngOnInit();
 
     const classes = this.route.snapshot.data['classes'];
-    if(classes) this.elementRef.nativeElement.classList.add(classes);
+    if (classes) this.elementRef.nativeElement.classList.add(classes);
   }
 
-  showDialog(template: TemplateRef<any>, options?: { title?: string, width?: string, context?: any }) {
+  showDialog(template: TemplateRef<any>, options?: { title?: string, width?: string, context?: any }): DialogComponent {
     return this.dialogService.open({
       template: template,
       width: '500px',

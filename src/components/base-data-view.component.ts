@@ -32,7 +32,7 @@ export abstract class BaseDataViewComponent extends BasePanelComponent {
     })
   }
 
-  override showDialog(template: TemplateRef<any>, options?: { title?: string; width?: string, context?: any }): DialogRef {
+  override showDialog(template: TemplateRef<any>, options?: { title?: string; width?: string, context?: any }) {
     const dialog = super.showDialog(template, options);
     dialog.onClose.subscribe(() => {
       this.load();

@@ -39,11 +39,11 @@ export abstract class BaseFormComponent extends BasePanelComponent {
     if (!value.id) {
       delete value.id;
       this.subscription.add(this.repository.add(value).subscribe(res => {
-        this.onComplete.emit();
+        this.onComplete.emit(res.data);
       }));
     } else {
       this.subscription.add(this.repository.edit(value.id, value).subscribe(res => {
-        this.onComplete.emit();
+        this.onComplete.emit(res.data);
       }));
     }
   }
