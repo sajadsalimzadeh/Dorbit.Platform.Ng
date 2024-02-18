@@ -1,11 +1,13 @@
 import {Directive, Injector, TemplateRef} from '@angular/core';
-import {BaseComponent, ConfirmOptions, DialogComponent, DialogOptions, DialogService} from "@framework";
+import {BaseComponent, ConfirmOptions, DialogComponent, DialogOptions, DialogRef, DialogService} from "@framework";
 import {FormGroup} from "@angular/forms";
 import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
 import {FormUtil} from "../../../framework/projects/core/src/utils/form";
 
 @Directive()
 export abstract class BasePanelComponent extends BaseComponent {
+
+  dialog?: DialogRef;
 
   protected messages = {
     formInvalid: (form?: FormGroup) => {
@@ -37,16 +39,16 @@ export abstract class BasePanelComponent extends BaseComponent {
   }
 
   showDialog(template: TemplateRef<any>, options?: { title?: string, width?: string, context?: any }): DialogComponent {
-    return this.dialogService.open({
+    return this.dialog = this.dialogService.open({
       template: template,
       width: '500px',
+      maskClosable: true,
       position: 'top-center',
       ...options,
     })
   }
 
   confirm(message?: string, dialogOptions?: DialogOptions) {
-
     return new Promise<ConfirmOptions>((resolve, reject) => {
       const options = {
         text: message ?? this.t('message.confirm.description'),

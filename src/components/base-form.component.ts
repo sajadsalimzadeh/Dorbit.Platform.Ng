@@ -40,10 +40,12 @@ export abstract class BaseFormComponent extends BasePanelComponent {
       delete value.id;
       this.subscription.add(this.repository.add(value).subscribe(res => {
         this.onComplete.emit(res.data);
+        this.dialog?.close();
       }));
     } else {
       this.subscription.add(this.repository.edit(value.id, value).subscribe(res => {
         this.onComplete.emit(res.data);
+        this.dialog?.close();
       }));
     }
   }

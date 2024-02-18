@@ -2,6 +2,7 @@ import {Component, Injector, Input} from '@angular/core';
 import {NavigationCancel, NavigationEnd, NavigationError} from "@angular/router";
 import {BaseComponent, internetStateService} from "@framework";
 import {MenuItem} from "../../../services/base-layout.service";
+import {AuthService, UserDto} from "@identity";
 
 @Component({
   selector: 'panel-layout-mobile',
@@ -18,7 +19,9 @@ export class LayoutMobileComponent extends BaseComponent {
   signal: number = 4;
   selectedMenu?: MenuItem;
 
-  constructor(injector: Injector) {
+  user?: UserDto;
+
+  constructor(injector: Injector, private authService: AuthService) {
     super(injector);
   }
 
@@ -49,6 +52,10 @@ export class LayoutMobileComponent extends BaseComponent {
     }));
 
     this.processSelectedMenu(this.router.url);
+
+    this.subscription.add(this.authService.$user.subscribe(e => {
+      this.user = e;
+    }))
   }
 
   override ngOnDestroy() {

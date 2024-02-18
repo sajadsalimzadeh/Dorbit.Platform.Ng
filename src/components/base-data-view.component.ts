@@ -20,7 +20,7 @@ export abstract class BaseDataViewComponent extends BasePanelComponent {
     this.load();
   }
 
-  protected abstract loader(query: ODataQueryOptions): Observable<PagedListResult>;
+  protected abstract loader(query?: ODataQueryOptions): Observable<PagedListResult>;
 
   protected load() {
     this.loadSubscription.unsubscribe();

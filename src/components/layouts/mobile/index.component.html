@@ -7,8 +7,12 @@
       </a>
     </div>
     <div class="center">
-      <img src="assets/images/logo.png"/>
-      <span>{{ 'main.title' | translate }}</span>
+      <div class="logo">
+        <span>{{ 'main.title' | translate }}</span>
+      </div>
+      <div class="user-name">
+        {{user?.name}}
+      </div>
     </div>
     <div class="end">
       <a class="reload" (click)="reload()">
