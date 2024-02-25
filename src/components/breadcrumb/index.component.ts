@@ -20,7 +20,7 @@ export class BreadcrumbComponent extends BaseComponent {
   }
 
   back() {
-    if(this.onBack.observed) {
+    if (this.onBack.observed) {
       this.onBack.emit();
     } else {
       this.location.back();
