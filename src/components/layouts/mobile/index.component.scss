@@ -263,6 +263,10 @@ footer {
   z-index: 10;
   position: relative;
 
+  @media (max-height: 500px) {
+    display: none;
+  }
+
   &::before {
     content: '';
     top: 0;
