@@ -24,8 +24,8 @@ export class LayoutAdminComponent extends BaseComponent {
     injector: Injector,
     private readonly zone: NgZone,
     private panelService: PanelService,
-    @Inject(APP_VERSION) @Optional() protected version: string,
-    @Inject(BaseLayoutService) private baseLayoutServices: BaseLayoutService[]) {
+    @Inject(BaseLayoutService) private baseLayoutServices: BaseLayoutService[],
+    @Inject(APP_VERSION) @Optional() protected version?: () => string,) {
     super(injector);
   }
 

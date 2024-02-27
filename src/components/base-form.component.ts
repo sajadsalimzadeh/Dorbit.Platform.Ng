@@ -26,7 +26,7 @@ export abstract class BaseFormComponent extends BasePanelComponent {
     }
   }
 
-  save() {
+  submit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       const firstFocusEl = this.elementRef.nativeElement.querySelector('form .ng-invalid[tabindex], form .ng-invalid [tabindex]') as HTMLElement;

@@ -38,7 +38,7 @@ export abstract class BasePanelComponent extends BaseComponent {
     if (classes) this.elementRef.nativeElement.classList.add(classes);
   }
 
-  showDialog(template: TemplateRef<any>, options?: { title?: string, width?: string, context?: any }): DialogComponent {
+  showDialog(template: TemplateRef<any>, options?: DialogOptions): DialogComponent {
     return this.dialog = this.dialogService.open({
       template: template,
       width: '500px',

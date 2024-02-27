@@ -1,4 +1,1 @@
-
-export interface JobDto {
-
-}
+export * from './job.repository';

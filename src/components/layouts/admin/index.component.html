@@ -8,9 +8,9 @@
     </div>
   </div>
   <div class="toolbar">
-    <div class="version">
+    <div class="version" *ngIf="version">
       <span>نسخه برنامه :</span>
-      <b>{{ version }}</b>
+      <b>{{ version() }}</b>
     </div>
     <div class="date-time">
       <div class="date"></div>
