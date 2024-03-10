@@ -28,6 +28,8 @@ export interface JobDto {
   endTime: string;
   status: JobStatus;
   pausable: boolean;
+  downloadable: boolean;
+  downloadFilename: string;
   progress: number;
   auditLogs: JobAuditLogDto;
 }

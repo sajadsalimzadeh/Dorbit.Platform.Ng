@@ -42,6 +42,7 @@
             <d-button *ngIf="item.status == JobStatus.Running" size="sm" mode="text" color="danger" icon="far fa-circle-pause" (click)="pause(item)"></d-button>
             <d-button *ngIf="item.status == JobStatus.Pause" size="sm" mode="text" color="success" icon="far fa-circle-play" (click)="resume(item)"></d-button>
           </ng-container>
+          <d-button *ngIf="item.downloadable" size="sm" mode="text" color="success" icon="far fa-download" [disabled]="item.status != JobStatus.Finish" (click)="download(item)"></d-button>
         </div>
       </td>
     </tr>

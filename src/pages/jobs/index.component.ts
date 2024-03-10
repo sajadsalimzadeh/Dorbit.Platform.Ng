@@ -1,8 +1,9 @@
 import {Component, Injector} from '@angular/core';
-import {BaseComponent, CancellationToken, EnumUtil, TableData} from "@framework";
+import {CancellationToken, EnumUtil, TableData} from "@framework";
 import {JobRepository} from "../../repositories";
 import {JobAuditLogType, JobDto, JobStatus} from "../../contracts";
 import {BasePanelComponent} from "@panel";
+import {saveAs} from 'file-saver';
 
 @Component({
   selector: 'page-jobs',
@@ -66,6 +67,12 @@ export class IndexComponent extends BasePanelComponent {
   resume(item: JobDto) {
     this.jobRepository.resume(item.id).subscribe(res => {
       this.load();
-    })
+    });
+  }
+
+  download(item: JobDto) {
+    this.jobRepository.download(item.id).subscribe(res => {
+      saveAs(res, item.downloadFilename);
+    });
   }
 }

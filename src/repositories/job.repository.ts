@@ -62,4 +62,8 @@ export class JobRepository extends BaseApiRepository {
   resume(id: string) {
     return this.http.post<QueryResult<JobLogDto[]>>(`${id}/Resume`, {});
   }
+
+  download(id: string) {
+    return this.http.post(`${id}/Download`, {}, {responseType: 'blob'});
+  }
 }
