@@ -7,7 +7,7 @@ import {FormUtil} from "../../../framework/projects/core/src/utils/form";
 @Directive()
 export abstract class BasePanelComponent extends BaseComponent {
 
-  dialog?: DialogRef;
+  dialog?: DialogComponent;
 
   protected messages = {
     formInvalid: (form?: FormGroup) => {
@@ -38,7 +38,7 @@ export abstract class BasePanelComponent extends BaseComponent {
     if (classes) this.elementRef.nativeElement.classList.add(classes);
   }
 
-  showDialog(template: TemplateRef<any>, options?: DialogOptions): DialogComponent {
+  showDialog(template: TemplateRef<any>, options?: DialogOptions): DialogComponent | undefined {
     return this.dialog = this.dialogService.open({
       template: template,
       width: '500px',
