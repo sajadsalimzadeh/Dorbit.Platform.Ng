@@ -65,7 +65,7 @@ export class LayoutMobileComponent extends BaseComponent {
   processRouteData() {
     this.show = {};
     let route = this.route.firstChild;
-    while(route) {
+    while (route) {
       const shows = route?.snapshot?.data['show'] ?? route?.parent?.snapshot?.data['show'] ?? [];
       shows.forEach((x: string) => {
         this.show[x] = true;
@@ -75,13 +75,7 @@ export class LayoutMobileComponent extends BaseComponent {
   }
 
   processSelectedMenu(url: string) {
-    this.selectedMenu = this.menus.find(x => {
-      if (x.link) {
-        const index = url.indexOf(x.link);
-        return index > -1 && index < 2;
-      }
-      return false;
-    });
+    this.selectedMenu = this.menus.find(x => url == x.link);
   }
 
   async reload() {
