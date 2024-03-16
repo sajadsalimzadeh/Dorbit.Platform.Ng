@@ -43,7 +43,8 @@ export abstract class BaseFormComponent extends BasePanelComponent {
         this.dialog?.close();
       }));
     } else {
-      this.subscription.add(this.repository.edit(value.id, value).subscribe(res => {
+      console.log(this.model)
+      this.subscription.add(this.repository.edit(value.id, {...this.model, ...value}).subscribe(res => {
         this.onComplete.emit(res.data);
         this.dialog?.close();
       }));
