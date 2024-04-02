@@ -26,6 +26,8 @@ export abstract class BaseFormComponent extends BasePanelComponent {
     }
   }
 
+  beforeSubmit(value: any): void {}
+
   submit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -36,6 +38,7 @@ export abstract class BaseFormComponent extends BasePanelComponent {
       return;
     }
     const value = this.form.value;
+    this.beforeSubmit(value);
     if (!value.id) {
       delete value.id;
       this.subscription.add(this.repository.add(value).subscribe(res => {
