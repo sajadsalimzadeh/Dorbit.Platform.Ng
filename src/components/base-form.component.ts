@@ -37,7 +37,7 @@ export abstract class BaseFormComponent extends BasePanelComponent {
       this.messageService.warn('مقادیر وارد شده صحیح نمیباشد')
       return;
     }
-    const value = this.form.value;
+    const value = this.form.getRawValue();
     this.beforeSubmit(value);
     if (!value.id) {
       delete value.id;
@@ -46,7 +46,7 @@ export abstract class BaseFormComponent extends BasePanelComponent {
         this.dialog?.close();
       }));
     } else {
-      console.log(this.model)
+      console.log(this.model, value)
       this.subscription.add(this.repository.edit(value.id, {...this.model, ...value}).subscribe(res => {
         this.onComplete.emit(res.data);
         this.dialog?.close();
