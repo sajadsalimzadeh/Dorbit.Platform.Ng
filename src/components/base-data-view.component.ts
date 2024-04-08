@@ -20,6 +20,12 @@ export abstract class BaseDataViewComponent extends BasePanelComponent {
     this.load();
   }
 
+  override ngOnDestroy() {
+    super.ngOnDestroy();
+
+    this.loadSubscription.unsubscribe();
+  }
+
   protected abstract loader(query?: ODataQueryOptions): Observable<PagedListResult>;
 
   protected load() {
