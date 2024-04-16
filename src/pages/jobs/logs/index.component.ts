@@ -25,7 +25,7 @@ export class LogComponent extends BasePanelComponent {
   constructor(injector: Injector, private jobRepository: JobRepository) {
     super(injector);
 
-    jobRepository.setLoadingService(this.loadingService)
+    jobRepository.loadingService = this.loadingService;
   }
 
   override ngOnInit() {
