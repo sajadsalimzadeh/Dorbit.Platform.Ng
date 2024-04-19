@@ -51,7 +51,7 @@ export abstract class BasePanelComponent extends BaseComponent {
   confirm(message?: string, dialogOptions?: DialogOptions) {
     return new Promise<ConfirmOptions>((resolve, reject) => {
       const options = {
-        text: message ?? this.t('message.confirm.description'),
+        message: message ?? this.t('message.confirm.description'),
         buttons: [
           {
             text: this.t('yes'), color: 'success', action: () => {

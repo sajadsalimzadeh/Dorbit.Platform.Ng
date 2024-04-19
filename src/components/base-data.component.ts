@@ -16,7 +16,7 @@ export abstract class BaseDataComponent extends BaseDataViewComponent {
 
   remove(item: any) {
     const dialog = this.dialogService.confirm({
-      text: 'آیا از حذف این ردیف اطمینان دارید؟',
+      message: 'آیا از حذف این ردیف اطمینان دارید؟',
       buttons: [
         {
           color: 'success', text: 'بله', action: (btn) => {
