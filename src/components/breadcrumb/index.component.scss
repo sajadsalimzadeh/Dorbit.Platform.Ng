@@ -1,5 +1,11 @@
 d-breadcrumb {
   cursor: pointer;
+
+  ::ng-deep {
+    ul {
+      padding: .7rem 0;
+    }
+  }
 }
 
 .back {

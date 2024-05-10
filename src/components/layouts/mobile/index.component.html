@@ -23,7 +23,7 @@
   <main>
     <ng-content></ng-content>
   </main>
-  <footer *ngIf="show.footer">
+  <footer *ngIf="show.footer && menus.length > 0">
     <ul>
       <li *ngFor="let menu of menus" [ngClass]="[menu.class ?? '', (selectedMenu == menu ? 'selected' : '')]">
         <a [routerLink]="menu.link">
