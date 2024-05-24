@@ -1,9 +1,9 @@
 import {Component, Inject, Injector, NgZone, Optional} from '@angular/core';
 import {APP_VERSION, BaseComponent} from "@framework";
-import {BaseLayoutService, MenuItem} from "../../../services/base-layout.service";
-import {PanelService, UserInfo} from "../../../services/panel.service";
+import {BaseLayoutService, MenuItem} from "../../services/base-layout.service";
+import {PanelService, UserInfo} from "../../services/panel.service";
 import moment from "jalali-moment";
-import {panelStore} from "../../../stores";
+import {panelStore} from "../../stores";
 
 @Component({
   selector: 'panel-layout-admin',

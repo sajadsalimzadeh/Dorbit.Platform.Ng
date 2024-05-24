@@ -1,7 +1,6 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
-import {DorbitModule} from "@framework";
-import {LayoutAdminComponent} from "./components/layouts/admin/index.component";
-import {LayoutMobileComponent} from "./components/layouts/mobile/index.component";
+import {LayoutAdminComponent} from "./layouts/admin/index.component";
+import {LayoutMobileComponent} from "./layouts/mobile/index.component";
 import {PanelSharedModule} from "./components";
 import {Routes} from "@angular/router";
 
