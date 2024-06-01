@@ -4,8 +4,8 @@ import {DialogOptions, DialogRef, ODataQueryOptions, PagedListResult, TableConfi
 import {Observable, Subscription} from "rxjs";
 
 @Directive()
-export abstract class BaseDataViewComponent extends BasePanelComponent {
-  data: TableData = {items: [], totalCount: 0};
+export abstract class BaseDataViewComponent<T = any> extends BasePanelComponent {
+  data: TableData<T> = {items: [], totalCount: 0};
   config = new TableConfig();
 
   loadSubscription = new Subscription();
