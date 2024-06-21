@@ -1,7 +1,7 @@
 import {Directive, EventEmitter, Injector, Input, Output, Type} from '@angular/core';
 import {BasePanelComponent} from "./base-panel.component";
 import {FormGroup} from "@angular/forms";
-import {BaseWriteRepository} from "@framework";
+import {ISaveRepository} from "@framework";
 
 @Directive()
 export abstract class BaseFormComponent extends BasePanelComponent {
@@ -11,14 +11,14 @@ export abstract class BaseFormComponent extends BasePanelComponent {
 
   protected abstract form: FormGroup;
 
-  constructor(injector: Injector, protected repository: BaseWriteRepository) {
+  constructor(injector: Injector, protected repository: ISaveRepository) {
     super(injector);
   }
 
   override ngOnInit() {
     super.ngOnInit();
 
-    if(this.model) {
+    if (this.model) {
       this.form.patchValue(this.model);
       this.form.get('id')?.enable();
     } else {
@@ -26,7 +26,8 @@ export abstract class BaseFormComponent extends BasePanelComponent {
     }
   }
 
-  beforeSubmit(value: any): void {}
+  beforeSubmit(value: any): void {
+  }
 
   submit() {
     if (this.form.invalid) {
@@ -39,18 +40,9 @@ export abstract class BaseFormComponent extends BasePanelComponent {
     }
     const value = this.form.getRawValue();
     this.beforeSubmit(value);
-    if (!value.id) {
-      delete value.id;
-      this.subscription.add(this.repository.add(value).subscribe(res => {
-        this.onComplete.emit(res.data);
-        this.dialog?.close();
-      }));
-    } else {
-      console.log(this.model, value)
-      this.subscription.add(this.repository.edit(value.id, {...this.model, ...value}).subscribe(res => {
-        this.onComplete.emit(res.data);
-        this.dialog?.close();
-      }));
-    }
+    this.subscription.add(this.repository.save({...this.model, ...value}).subscribe(res => {
+      this.onComplete.emit(res.data);
+      this.dialog?.close();
+    }));
   }
 }
