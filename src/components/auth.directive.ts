@@ -36,7 +36,7 @@ export class AuthDirective implements OnInit, OnDestroy {
 
   render() {
     let granted: boolean;
-    if (this.needleAccesses) {
+    if (this.needleAccesses && this.needleAccesses.length > 0) {
       granted = !!this.needleAccesses.find(x => this.accesses.includes(x))
     } else {
       granted = true;
