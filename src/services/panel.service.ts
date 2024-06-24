@@ -2,6 +2,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 
 export interface UserInfo {
+  id: string;
   name: string;
 }
 
