@@ -6,6 +6,7 @@ import {Routes} from "@angular/router";
 
 export * from './components';
 export * from './services';
+export * from './repositories';
 
 @NgModule({
   imports: [PanelSharedModule],

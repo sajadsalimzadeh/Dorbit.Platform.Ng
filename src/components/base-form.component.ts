@@ -29,6 +29,7 @@ export abstract class BaseFormComponent extends BasePanelComponent {
   beforeSubmit(value: any): void {
   }
 
+
   submit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -38,9 +39,13 @@ export abstract class BaseFormComponent extends BasePanelComponent {
       this.messageService.warn('مقادیر وارد شده صحیح نمیباشد')
       return;
     }
-    const value = this.form.getRawValue();
+    let value = this.form.getRawValue();
     this.beforeSubmit(value);
-    this.subscription.add(this.repository.save({...this.model, ...value}).subscribe(res => {
+    value = {...this.model, ...value} as any;
+    if (!this.model) {
+      delete value.id;
+    }
+    this.subscription.add(this.repository.save(this.model?.id, value).subscribe(res => {
       this.onComplete.emit(res.data);
       this.dialog?.close();
     }));
