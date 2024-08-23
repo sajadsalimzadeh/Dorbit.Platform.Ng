@@ -42,8 +42,8 @@ export abstract class BaseFormComponent extends BasePanelComponent {
     let value = this.form.getRawValue();
     this.beforeSubmit(value);
     value = {...this.model, ...value} as any;
-    if (!this.model) {
-      delete value.id;
+    if (this.model) {
+      value.id = this.model.id;
     }
     this.subscription.add(this.repository.save(this.model?.id, value).subscribe(res => {
       this.onComplete.emit(res.data);
