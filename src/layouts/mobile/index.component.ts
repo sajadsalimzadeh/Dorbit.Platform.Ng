@@ -70,6 +70,9 @@ export class LayoutMobileComponent extends BaseComponent {
       shows.forEach((x: string) => {
         this.show[x] = true;
       });
+      const queryParams = route?.snapshot.queryParams ?? route?.parent?.snapshot.queryParams ?? {};
+      if(queryParams['header'] == 'hide') this.show.header = false;
+      if(queryParams['footer'] == 'hide') this.show.footer = false;
       route = route.parent;
     }
   }
