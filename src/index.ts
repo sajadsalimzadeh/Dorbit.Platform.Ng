@@ -6,7 +6,6 @@ import {Routes} from "@angular/router";
 
 export * from './components';
 export * from './services';
-export * from './repositories';
 
 @NgModule({
   imports: [PanelSharedModule],
@@ -20,11 +19,5 @@ export class PanelModule {
       ngModule: PanelModule,
       providers: []
     }
-  }
-
-  static getRoutes() {
-    return [
-      {path: 'jobs', loadChildren: () => import('./pages/jobs/index.module').then(x => x.IndexModule) }
-    ] as Routes;
   }
 }
