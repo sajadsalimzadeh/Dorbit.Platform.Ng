@@ -1,4 +1,4 @@
-import {Directive, Injector, Type} from '@angular/core';
+import {Directive, Injector} from '@angular/core';
 import {BaseWriteRepository, ODataQueryOptions, PagedListResult} from "@framework";
 import {BaseDataViewComponent} from "./base-data-view.component";
 import {Observable} from "rxjs";
