@@ -1,23 +1,35 @@
 <div class="frame">
   <header *ngIf="show.header">
     <div class="start">
+      <ng-container *ngIf="headerStartStartTpl">
+        <ng-container *ngTemplateOutlet="headerStartStartTpl"></ng-container>
+      </ng-container>
       <a class="notification" routerLink="/notifications" [ngClass]="{active: router.url.startsWith('/notifications')}">
-        <i class="far fa-bell" [ngClass]="(notificationCount > 0 ? 'move' : '')"></i>
+        <i class="fal fa-bell" [ngClass]="(notificationCount > 0 ? 'move' : '')"></i>
         <span *ngIf="notificationCount > 0" class="badge">{{ notificationCount }}</span>
       </a>
+      <ng-container *ngIf="headerStartEndTpl">
+        <ng-container *ngTemplateOutlet="headerStartEndTpl"></ng-container>
+      </ng-container>
     </div>
     <div class="center">
       <div class="logo">
         <span>{{ 'main.title' | translate }}</span>
       </div>
       <div class="user-name">
-        {{user?.name}}
+        {{ user?.name }}
       </div>
     </div>
     <div class="end">
+      <ng-container *ngIf="headerEndStartTpl">
+        <ng-container *ngTemplateOutlet="headerEndStartTpl"></ng-container>
+      </ng-container>
       <a class="reload" (click)="reload()">
-        <i class="far fa-refresh"></i>
+        <i class="fal fa-refresh"></i>
       </a>
+      <ng-container *ngIf="headerEndEndTpl">
+        <ng-container *ngTemplateOutlet="headerEndEndTpl"></ng-container>
+      </ng-container>
     </div>
   </header>
   <main>

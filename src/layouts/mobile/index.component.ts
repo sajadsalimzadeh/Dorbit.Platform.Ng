@@ -1,6 +1,6 @@
-import {Component, Injector, Input} from '@angular/core';
+import {Component, ContentChildren, Injector, Input, QueryList, TemplateRef} from '@angular/core';
 import {NavigationCancel, NavigationEnd, NavigationError} from "@angular/router";
-import {BaseComponent, internetStateService} from "@framework";
+import {BaseComponent, internetStateService, TemplateDirective} from "@framework";
 import {MenuItem} from "../../services/base-layout.service";
 import {AuthService, UserDto} from "@identity";
 
@@ -12,6 +12,18 @@ import {AuthService, UserDto} from "@identity";
 export class LayoutMobileComponent extends BaseComponent {
 
   @Input({required: true}) menus: MenuItem[] = [];
+
+  headerStartStartTpl?: TemplateRef<any>;
+  headerStartEndTpl?: TemplateRef<any>;
+  headerEndStartTpl?: TemplateRef<any>;
+  headerEndEndTpl?: TemplateRef<any>;
+
+  @ContentChildren(TemplateDirective) set templates(templates: QueryList<TemplateDirective>) {
+    this.headerStartStartTpl = templates.find(x => x.name == 'header-start-start')?.template;
+    this.headerStartEndTpl = templates.find(x => x.name == 'header-start-end')?.template;
+    this.headerEndStartTpl = templates.find(x => x.name == 'header-end-start')?.template;
+    this.headerEndEndTpl = templates.find(x => x.name == 'header-end-end')?.template;
+  }
 
   show: any = {};
   notificationCount: number = 0;

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {BaseComponent} from "@framework";
 
 @Component({
@@ -8,6 +8,8 @@ import {BaseComponent} from "@framework";
 })
 
 export class BreadcrumbComponent extends BaseComponent {
+  @Input() backLink?: string;
+
   @Output() onBack = new EventEmitter();
 
   urls: string[] = [];
@@ -20,7 +22,9 @@ export class BreadcrumbComponent extends BaseComponent {
   }
 
   back() {
-    if (this.onBack.observed) {
+    if(this.backLink) {
+      this.router.navigateByUrl(this.backLink);
+    } else if (this.onBack.observed) {
       this.onBack.emit();
     } else {
       this.location.back();

@@ -88,7 +88,7 @@
   }
 }
 
-header {
+header::ng-deep {
   z-index: 10;
   display: flex;
   height: 4.7rem;
@@ -99,7 +99,7 @@ header {
   background-color: var(--color-white);
 
   a {
-    width: 35px;
+    width: 40px;
     height: 100%;
     display: flex;
     position: relative;
