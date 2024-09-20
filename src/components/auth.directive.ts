@@ -1,6 +1,6 @@
 import {Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from "@angular/core";
 import {Subscription} from "rxjs";
-import {PanelService} from "@panel";
+import {PanelService} from "../services/panel.service";
 
 @Directive({
   selector: '[auth]',
