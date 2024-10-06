@@ -4,10 +4,10 @@
       <ng-container *ngIf="headerStartStartTpl">
         <ng-container *ngTemplateOutlet="headerStartStartTpl"></ng-container>
       </ng-container>
-      <a class="notification" routerLink="/notifications" [ngClass]="{active: router.url.startsWith('/notifications')}">
-        <i class="fal fa-bell" [ngClass]="(notificationCount > 0 ? 'move' : '')"></i>
-        <span *ngIf="notificationCount > 0" class="badge">{{ notificationCount }}</span>
-      </a>
+<!--      <a class="notification" routerLink="/notifications" [ngClass]="{active: router.url.startsWith('/notifications')}">-->
+<!--        <i class="fal fa-bell" [ngClass]="(notificationCount > 0 ? 'move' : '')"></i>-->
+<!--        <span *ngIf="notificationCount > 0" class="badge">{{ notificationCount }}</span>-->
+<!--      </a>-->
       <ng-container *ngIf="headerStartEndTpl">
         <ng-container *ngTemplateOutlet="headerStartEndTpl"></ng-container>
       </ng-container>
