@@ -15,4 +15,5 @@ td div.status {
   &.Pause {color: var(--color-warning);}
   &.Running {color: var(--color-primary);}
   &.Finish {color: var(--color-success);}
+  &.FinishError {color: var(--color-danger);}
 }

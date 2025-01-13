@@ -23,12 +23,15 @@
             <i *ngSwitchCase="JobStatus.Running" class="far fa-spinner"></i>
             <i *ngSwitchCase="JobStatus.Pause" class="far fa-pause"></i>
             <i *ngSwitchCase="JobStatus.Finish" class="far fa-check"></i>
+            <i *ngSwitchCase="JobStatus.FinishError" class="far fa-times"></i>
           </ng-container>
           <b>{{ 'job.status.' + EnumUtil.getName(JobStatus, item.status) | translate }}</b>
         </div>
       </td>
       <td>
-        <b [ngClass]="(item.progress < 100 && item.status == JobStatus.Finish ? 'color-danger' : '')">{{ item.progress?.toFixed(2) }}%</b>
+        <b [ngClass]="(item.status == JobStatus.FinishError ? 'color-danger' : '')">
+          {{ item.progress?.toFixed(2) }}%
+        </b>
       </td>
       <td class="operation-cell">
         <div class="flex-row flex-gap-2">
