@@ -14,33 +14,22 @@ export abstract class BaseDataComponent extends BaseDataViewComponent {
     return this.repository.select(query);
   }
 
-  remove(item: any) {
-    const dialog = this.dialogService.confirm({
-      message: 'آیا از حذف این ردیف اطمینان دارید؟',
-      buttons: [
-        {
-          color: 'success', text: 'بله', action: (btn) => {
-            btn.loading = true;
-            this.repository.remove(item.id).subscribe({
-              next: () => {
-                btn.loading = false;
-                this.load();
-                dialog.close();
-              },
-              error: () => {
-                btn.loading = false;
-              }
-            });
-          }
+  remove(item: any, title?: string, body?: string) {
+    const dialog = this.dialogService.confirmYesNo(() => {
+      dialog.loading = true;
+      this.repository.remove(item.id).subscribe({
+        next: () => {
+          dialog.loading = false;
+          this.load();
+          dialog.close();
         },
-        {
-          color: 'danger', text: 'خیر', action: () => {
-            dialog.close();
-          }
-        },
-      ]
-    }, {
-      title: 'حذف'
+        error: () => {
+          dialog.loading = false;
+        }
+      });
+    }, undefined, {
+      title: title ?? 'حذف',
+      body: body ?? 'آیا از حذف مورد انتخاب شده اطمینان دارید؟'
     })
   }
 }
